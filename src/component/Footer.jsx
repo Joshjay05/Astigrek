@@ -2,7 +2,7 @@
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-6">
+    <footer className="bg-gray-light text-white py-6">
       <div className="container mx-auto text-center">
         <p>© 2024 MySite. All rights reserved.</p>
         <div className="flex justify-center space-x-4 mt-4">
