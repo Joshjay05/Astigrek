@@ -1,114 +1,201 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const handleMouseEnterLink = (index) => {
-    setActiveDropdown(index);
+    if (window.innerWidth >= 1024) {
+      setActiveDropdown(index);
+    }
   };
 
   const handleMouseLeaveDropdown = () => {
     setActiveDropdown(null); // Close dropdown when leaving both link and dropdown area
   };
 
+  const toggleAccordion = (index) => {
+    setActiveAccordion((prev) => (prev === index ? null : index));
+  };
+  const toggleMobileMenu = () => {
+    setIsMobileOpen((prev) => !prev); // Toggle mobile menu visibility
+  };
+
+  // Prevent body scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobileOpen]);
   return (
     <nav className="bg-gray-800 text-white shadow-md">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold">
+        <Link to="/" className="text-2xl text-black font-bold">
           MySite
         </Link>
-        <div className="sm:hidden flex space-x-8">
-          {/* About Us - No dropdown */}
+        {/* Hamburger for mobile */}
+        <button
+          className=" text-gray-500 hover:text-gray-300 focus:outline-none lg:hidden fixed top-4 right-4 z-50"
+          onClick={toggleMobileMenu}
+        >
+          {isMobileOpen ? (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
+
+        {/* Full menu for large screens */}
+        <div className="lg:flex hidden  space-x-8">
           <Link to="/about-us" className="hover:text-gray text-gray">
             About Us
           </Link>
+          <Dropdown
+            title="Family"
+            items={[
+              { to: "/projects/kids", title: "Kids" },
+              { to: "/projects/children", title: "Children" },
+              { to: "/services/youth-home", title: "Youth Home" },
+            ]}
+            isActive={activeDropdown === 1}
+            onMouseEnterLink={() => handleMouseEnterLink(1)}
+            onMouseLeaveDropdown={handleMouseLeaveDropdown}
+          />
+          <Dropdown
+            title="Day Center"
+            items={[
+              { to: "/projects", title: "Projects" },
+              { to: "/services", title: "Services" },
+            ]}
+            isActive={activeDropdown === 2}
+            onMouseEnterLink={() => handleMouseEnterLink(2)}
+            onMouseLeaveDropdown={handleMouseLeaveDropdown}
+          />
+          <Link to="/gallery" className="hover:text-gray text-gray">
+            Gallery
+          </Link>
+          <Link to="/projects" className="hover:text-gray text-gray">
+            Projects
+          </Link>
+          <Link to="/training" className="hover:text-gray text-gray">
+            Training
+          </Link>
+          <Dropdown
+            title="What We Do"
+            items={[
+              { to: "/projects", title: "Projects" },
+              { to: "/services", title: "Services" },
+            ]}
+            isActive={activeDropdown === 3}
+            onMouseEnterLink={() => handleMouseEnterLink(3)}
+            onMouseLeaveDropdown={handleMouseLeaveDropdown}
+          />
+          <Link to="/contact" className="hover:text-gray text-gray">
+            Contact
+          </Link>
+        </div>
 
-          {/* Family - Dropdown */}
-          <div onMouseLeave={handleMouseLeaveDropdown}>
-            <Dropdown
+        {/* Mobile menu */}
+        {isMobileOpen && (
+          <div className="lg:hidden bg-slate-200 fixed inset-0 z-50 flex flex-col space-y-4 mt-16 pt-14 px-9 overflow-y- gap-4">
+            <Link to="/about-us" className="hover:text-gray text-gray">
+              About Us
+            </Link>
+            <Accordion
               title="Family"
               items={[
                 { to: "/projects/kids", title: "Kids" },
                 { to: "/projects/children", title: "Children" },
                 { to: "/services/youth-home", title: "Youth Home" },
               ]}
-              isActive={activeDropdown === 1}
-              onMouseEnterLink={() => handleMouseEnterLink(1)}
-              onMouseLeaveDropdown={handleMouseLeaveDropdown}
+              isActive={activeAccordion === 1}
+              toggleAccordion={() => toggleAccordion(1)}
             />
-          </div>
-
-          {/* Day Center - Dropdown */}
-          <div onMouseLeave={handleMouseLeaveDropdown}>
-            <Dropdown
+            <Accordion
               title="Day Center"
               items={[
                 { to: "/projects", title: "Projects" },
                 { to: "/services", title: "Services" },
               ]}
-              isActive={activeDropdown === 2}
-              onMouseEnterLink={() => handleMouseEnterLink(2)}
-              onMouseLeaveDropdown={handleMouseLeaveDropdown}
+              isActive={activeAccordion === 2}
+              toggleAccordion={() => toggleAccordion(2)}
             />
-          </div>
-
-          {/* Gallery - No dropdown */}
-          <Link to="/gallery" className="hover:text-gray text-gray">
-            Gallery
-          </Link>
-
-          {/* Projects - No dropdown */}
-          <Link to="/projects" className="hover:text-gray text-gray">
-            Projects
-          </Link>
-
-          {/* Training - No dropdown */}
-          <Link to="/training" className="hover:text-gray text-gray">
-            Training
-          </Link>
-
-          {/* What We Do - Dropdown */}
-          <div onMouseLeave={handleMouseLeaveDropdown}>
-            <Dropdown
+            <Link to="/gallery" className="hover:text-gray text-gray">
+              Gallery
+            </Link>
+            <Link to="/projects" className="hover:text-gray text-gray">
+              Projects
+            </Link>
+            <Link to="/training" className="hover:text-gray text-gray">
+              Training
+            </Link>
+            <Accordion
               title="What We Do"
               items={[
                 { to: "/projects", title: "Projects" },
                 { to: "/services", title: "Services" },
               ]}
-              isActive={activeDropdown === 3}
-              onMouseEnterLink={() => handleMouseEnterLink(3)}
-              onMouseLeaveDropdown={handleMouseLeaveDropdown}
+              isActive={activeAccordion === 3}
+              toggleAccordion={() => toggleAccordion(3)}
             />
+            <Link to="/contact" className="hover:text-gray text-gray">
+              Contact
+            </Link>
           </div>
-
-          {/* Contact - No dropdown */}
-          <Link to="/contact" className="hover:text-gray text-gray">
-            Contact
-          </Link>
-        </div>
+        )}
       </div>
     </nav>
   );
 }
 
-function Dropdown({
-  title,
-  items,
-  isActive,
-  onMouseEnterLink,
-  onMouseLeaveDropdown,
-}) {
+function Accordion({ title, items, isActive, toggleAccordion }) {
   return (
-    <div className="relative">
+    <div>
       <button
-        className="flex items-center space-x-2 text-gray-50 hover:text-gray-300 focus:outline-none pb-1"
-        onMouseEnter={onMouseEnterLink}
+        className="flex items-center gap-4 w-full py-2 text-left text-gray-50 hover:text-gray-300 focus:outline-none"
+        onClick={toggleAccordion}
       >
         <span>{title}</span>
         <svg
-          className={`w-4 h-4 transition-transform ${isActive ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform ${
+            isActive ? "rotate-180" : ""
+          }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -122,12 +209,84 @@ function Dropdown({
           ></path>
         </svg>
       </button>
-      {isActive && items && (
+      {isActive && (
+        <div className="pl-4">
+          {items.map((item, index) => (
+            <Link key={index} to={item.to} className="block py-2 text-gray-400">
+              {item.title}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+Accordion.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+  isActive: PropTypes.bool.isRequired,
+  toggleAccordion: PropTypes.func.isRequired,
+};
+
+function Dropdown({
+  title,
+  items,
+  isActive,
+  isAccordionActive,
+  onMouseEnterLink,
+  onMouseLeaveDropdown,
+  toggleAccordion,
+}) {
+  return (
+    <div className="relative">
+      <button
+        className="flex items-center space-x-2 text-gray-50 hover:text-gray-300 focus:outline-none pb-1"
+        onMouseEnter={onMouseEnterLink}
+        onClick={toggleAccordion} // Toggle accordion on mobile
+      >
+        <span>{title}</span>
+        <svg
+          className={`w-4 h-4 transition-transform ${
+            isActive || isAccordionActive ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+
+      {/* Dropdown for larger screens */}
+      {isActive && window.innerWidth >= 1024 && (
         <div
-          className="absolute left-0 mt-2 w-48 bg-gray-700 text-white shadow-lg rounded-lg z-50 border-t border-gray-400"
+          className="absolute top-2 left-0 mt-2 w-48 bg-gray-700 text-white shadow-lg rounded-lg z-50 border-t border-gray-400"
           onMouseEnter={onMouseEnterLink}
           onMouseLeave={onMouseLeaveDropdown}
         >
+          <ul>
+            {items.map((item, index) => (
+              <DropdownItem key={index} {...item} />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Accordion for mobile screens */}
+      {isAccordionActive && window.innerWidth < 1024 && (
+        <div className="mt-2 w-full bg-gray-700 text-white rounded-lg">
           <ul>
             {items.map((item, index) => (
               <DropdownItem key={index} {...item} />
@@ -148,8 +307,10 @@ Dropdown.propTypes = {
     })
   ),
   isActive: PropTypes.bool.isRequired,
+  isAccordionActive: PropTypes.bool.isRequired,
   onMouseEnterLink: PropTypes.func.isRequired,
   onMouseLeaveDropdown: PropTypes.func.isRequired,
+  toggleAccordion: PropTypes.func.isRequired,
 };
 
 function DropdownItem({ to, title }) {

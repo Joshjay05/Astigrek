@@ -14,3 +14,7 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
+{
+  /* Projects - No dropdown */
+}
