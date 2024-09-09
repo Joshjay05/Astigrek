@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import logo from "../assets/logo.jpg";
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -41,7 +41,7 @@ export function Navbar() {
     <nav className="bg-gray-800 text-white shadow-md">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl text-black font-bold">
-          MySite
+          <img src={logo} alt="Logo" className="h-24" />
         </Link>
         {/* Hamburger for mobile */}
         <button
@@ -115,9 +115,9 @@ export function Navbar() {
             Training
           </Link>
 
-          <Link to="/contact" className="hover:text-gray text-gray">
+          <a href="#foooter" className="hover:text-gray text-gray">
             Contact
-          </Link>
+          </a>
         </div>
 
         {/* Mobile menu */}
