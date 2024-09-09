@@ -8,14 +8,15 @@ const Training = () => {
         <p className="text-gray-700 leading-relaxed text-lg mb-4">
           Those who want to learn, contact{" "}
           <a
-            href="mailto:atsigrezk@gmail.com"
+            href="mailto: informacija@vaikudienoscentras.org 
+"
             className="text-blue-600 underline"
           >
-            atsigrezk@gmail.com
+            informacija@vaikudienoscentras.org
           </a>{" "}
           or call{" "}
-          <a href="tel:+865227553" className="text-blue-600 underline">
-            8 652 27 553
+          <a href="tel:+37068265969" className="text-blue-600 underline">
+            +37068265969
           </a>
           .
         </p>

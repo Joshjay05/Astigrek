@@ -8,7 +8,10 @@ export function Footer() {
           Email: informacija@vaikudienoscentras.org | Phone: +37068265969
         </p>
         <div className="text-center mb-4">
-          <p className="text-sm">© 2024 MySite. All rights reserved.</p>
+          <p className="text-sm">
+            © {new Date().getFullYear()} vaikudienoscentras.org. All rights
+            reserved.
+          </p>
         </div>
         <div className="flex justify-center space-x-6 mt-4">
           <a

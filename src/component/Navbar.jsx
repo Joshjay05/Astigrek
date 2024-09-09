@@ -92,7 +92,7 @@ export function Navbar() {
             //    title="Family"
             linkTo="/family"
             items={[
-              { to: "/children", title: "Chldren" },
+              { to: "/children", title: "Children" },
               { to: "/youth", title: "Youth" },
               //   { to: "/services/youth-home", title: "Youth Home" },
             ]}
@@ -115,7 +115,7 @@ export function Navbar() {
             Training
           </Link>
 
-          <a href="#foooter" className="hover:text-gray text-gray">
+          <a href="#footer" className="hover:text-gray text-gray">
             Contact
           </a>
         </div>
@@ -163,9 +163,9 @@ export function Navbar() {
               isActive={activeAccordion === 3}
               toggleAccordion={() => toggleAccordion(3)}
             />
-            <Link to="/contact" className="hover:text-gray text-gray">
+            <a href="#footer" className="hover:text-gray text-gray">
               Contact
-            </Link>
+            </a>
           </div>
         )}
       </div>
@@ -264,7 +264,7 @@ function Dropdown({
       {/* Dropdown for larger screens */}
       {isActive && window.innerWidth >= 1024 && (
         <div
-          className="absolute top-2 left-0 mt-2 w-48 bg-gray-light text-white shadow-lg rounded-lg z-50 border-t border-gray-400"
+          className="absolute top-2 mt-2 w-48 bg-[#fdfdfdb6] text-black py-4 shadow-lg rounded-lg z-50 border-t border-gray-400"
           onMouseEnter={onMouseEnterLink}
           onMouseLeave={onMouseLeaveDropdown}
         >

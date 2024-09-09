@@ -14,21 +14,16 @@ import CenterTwo from "./component/CenterTwo";
 import ChildrenGallery from "./component/Children";
 import GoldenChristmas from "./component/GoldenChristmas";
 import Concert from "./component/Concert";
-import YouthGallery from "./component/Youth";
-
-// import ChildrensPhotoSession from "./pages/ChildrensPhotoSession";
-// import GoldenHeartChristmas from "./pages/GoldenHeartChristmas";
-// import DancePerformance from "./pages/DancePerformance";
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar will be persistent on all pages */}
+        {/* Persistent Navbar */}
         <Navbar />
         <main className="flex-1">
           <Routes>
-            {/* Define your routes here */}
+            {/* Main Routes */}
             <Route path="/" element={<Homepage />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/family" element={<FamilySection />} />
@@ -37,17 +32,15 @@ function App() {
             <Route path="/centertwo" element={<CenterTwo />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/training" element={<Training />} />
-            <Route path="/youth" element={<YouthGallery />} />
-            {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="/services" element={<ServicesSection />} />
-            <Route path="/gallery" element={<Gallery />} />
             <Route path="/batches" element={<Batches />} />
             <Route path="/children" element={<ChildrenGallery />} />
             <Route path="/golden" element={<GoldenChristmas />} />
             <Route path="/dance" element={<Concert />} />
+            {/* Dynamic Routes */}
           </Routes>
         </main>
-        {/* Footer will be persistent on all pages */}
+        {/* Persistent Footer */}
         <Footer />
       </div>
     </Router>
