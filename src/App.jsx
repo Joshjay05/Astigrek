@@ -5,6 +5,17 @@ import { Footer } from "./component/Footer";
 import { Navbar } from "./component/Navbar";
 import Gallery from "./component/Gallery";
 import Batches from "./component/Batches";
+import AboutUs from "./component/AboutUs";
+import FamilySection from "./component/Family";
+import Training from "./component/Training";
+import Projects from "./component/Projects";
+import Center from "./component/Center";
+import CenterTwo from "./component/CenterTwo";
+import ChildrenGallery from "./component/Children";
+import GoldenChristmas from "./component/GoldenChristmas";
+import Concert from "./component/Concert";
+import YouthGallery from "./component/Youth";
+
 // import ChildrensPhotoSession from "./pages/ChildrensPhotoSession";
 // import GoldenHeartChristmas from "./pages/GoldenHeartChristmas";
 // import DancePerformance from "./pages/DancePerformance";
@@ -19,18 +30,21 @@ function App() {
           <Routes>
             {/* Define your routes here */}
             <Route path="/" element={<Homepage />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/family" element={<FamilySection />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/center" element={<Center />} />
+            <Route path="/centertwo" element={<CenterTwo />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/training" element={<Training />} />
+            <Route path="/youth" element={<YouthGallery />} />
+            {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="/services" element={<ServicesSection />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/batches" element={<Batches />} />
-            {/* <Route
-              path="/childrens-photo-session"
-              element={<ChildrensPhotoSession />}
-            />
-            <Route
-              path="/golden-heart-christmas"
-              element={<GoldenHeartChristmas />}
-            />
-            <Route path="/dance-performance" element={<DancePerformance />} /> */}
+            <Route path="/children" element={<ChildrenGallery />} />
+            <Route path="/golden" element={<GoldenChristmas />} />
+            <Route path="/dance" element={<Concert />} />
           </Routes>
         </main>
         {/* Footer will be persistent on all pages */}

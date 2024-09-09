@@ -7,7 +7,7 @@ const GalleryItem = ({ image, title, link }) => {
       <img src={image} alt={title} className="w-full h-48 object-cover" />
       <div className="p-4">
         <Link to={link}>
-          <h2 className="text-lg font-bold text-gray-800 hover:text-blue-600">
+          <h2 className="text-lg cursor-pointer font-bold text-gray-800 hover:text-blue-600">
             {title}
           </h2>
         </Link>

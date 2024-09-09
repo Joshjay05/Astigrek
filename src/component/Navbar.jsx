@@ -86,27 +86,25 @@ export function Navbar() {
           <Link to="/about-us" className="hover:text-gray text-gray">
             About Us
           </Link>
+          {/* <Link to="/family" className="hover:text-gray text-gray"> */}
           <Dropdown
             title="Family"
+            //    title="Family"
+            linkTo="/family"
             items={[
-              { to: "/projects/kids", title: "Kids" },
-              { to: "/projects/children", title: "Children" },
-              { to: "/services/youth-home", title: "Youth Home" },
+              { to: "/children", title: "Chldren" },
+              { to: "/youth", title: "Youth" },
+              //   { to: "/services/youth-home", title: "Youth Home" },
             ]}
             isActive={activeDropdown === 1}
             onMouseEnterLink={() => handleMouseEnterLink(1)}
             onMouseLeaveDropdown={handleMouseLeaveDropdown}
           />
-          <Dropdown
-            title="Day Center"
-            items={[
-              { to: "/projects", title: "Projects" },
-              { to: "/services", title: "Services" },
-            ]}
-            isActive={activeDropdown === 2}
-            onMouseEnterLink={() => handleMouseEnterLink(2)}
-            onMouseLeaveDropdown={handleMouseLeaveDropdown}
-          />
+          {/* </Link> */}
+
+          <Link to="/center" className="hover:text-gray text-gray">
+            Day Center
+          </Link>
           <Link to="/gallery" className="hover:text-gray text-gray">
             Gallery
           </Link>
@@ -116,16 +114,7 @@ export function Navbar() {
           <Link to="/training" className="hover:text-gray text-gray">
             Training
           </Link>
-          <Dropdown
-            title="What We Do"
-            items={[
-              { to: "/projects", title: "Projects" },
-              { to: "/services", title: "Services" },
-            ]}
-            isActive={activeDropdown === 3}
-            onMouseEnterLink={() => handleMouseEnterLink(3)}
-            onMouseLeaveDropdown={handleMouseLeaveDropdown}
-          />
+
           <Link to="/contact" className="hover:text-gray text-gray">
             Contact
           </Link>
@@ -242,10 +231,13 @@ function Dropdown({
   onMouseEnterLink,
   onMouseLeaveDropdown,
   toggleAccordion,
+  linkTo,
 }) {
   return (
     <div className="relative">
-      <button
+      {/* Wrap the title in a Link */}
+      <Link
+        to={linkTo} // Use the linkTo prop for the title link
         className="flex items-center space-x-2 text-gray-50 hover:text-gray-300 focus:outline-none pb-1"
         onMouseEnter={onMouseEnterLink}
         onClick={toggleAccordion} // Toggle accordion on mobile
@@ -267,12 +259,12 @@ function Dropdown({
             d="M19 9l-7 7-7-7"
           ></path>
         </svg>
-      </button>
+      </Link>
 
       {/* Dropdown for larger screens */}
       {isActive && window.innerWidth >= 1024 && (
         <div
-          className="absolute top-2 left-0 mt-2 w-48 bg-gray-700 text-white shadow-lg rounded-lg z-50 border-t border-gray-400"
+          className="absolute top-2 left-0 mt-2 w-48 bg-gray-light text-white shadow-lg rounded-lg z-50 border-t border-gray-400"
           onMouseEnter={onMouseEnterLink}
           onMouseLeave={onMouseLeaveDropdown}
         >
@@ -305,12 +297,13 @@ Dropdown.propTypes = {
       to: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
   isActive: PropTypes.bool.isRequired,
   isAccordionActive: PropTypes.bool.isRequired,
   onMouseEnterLink: PropTypes.func.isRequired,
   onMouseLeaveDropdown: PropTypes.func.isRequired,
   toggleAccordion: PropTypes.func.isRequired,
+  linkTo: PropTypes.string.isRequired, // Prop for the title link
 };
 
 function DropdownItem({ to, title }) {

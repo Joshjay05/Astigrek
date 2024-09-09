@@ -1,24 +1,25 @@
-import FamilyCard from "./Family";
-
+import FamilyCard from "./FamCard";
+import children from "../assets/childone.jpg";
+import youth from "../assets/youth.jpg";
 const families = [
   {
-    image: "https://example.com/kids.jpg",
-    title: "KIDS",
+    image: children,
+    title: "Children's home",
     address: "Žemynos str. 3-24",
     contact: "8 686 72350",
   },
   {
-    image: "https://example.com/cool.jpg",
-    title: "THE COOL",
+    image: youth,
+    title: "Youth home",
     address: "S. Konarskios str. 32-10",
     contact: "8 699 42861",
   },
-  {
-    image: "https://example.com/dreams.jpg",
-    title: "DREAMS",
-    address: "Fabijoniškių str. 43-71",
-    contact: "8 690 37,574",
-  },
+  // {
+  //   image: "https://example.com/dreams.jpg",
+  //   title: "DREAMS",
+  //   address: "Fabijoniškių str. 43-71",
+  //   contact: "8 690 37,574",
+  // },
   // Add more family objects as needed
 ];
 
@@ -26,7 +27,7 @@ const FamilySection = () => {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Families</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6">
         {families.map((family, index) => (
           <FamilyCard
             key={index}

@@ -1,19 +1,75 @@
-// import React from "react";
-
 const Training = () => {
   return (
-    <div>
-      Qualification training Those who want to learn, contact
-      atsigrezk@gmail.com or phone 8 652 27 553. FUNDAMENTALS OF SOCIAL WORK
-      Inaugural program for improving the professional competence of individual
-      care personnel 40 ac.h. The price is 150 EUR. DEVELOPMENT OF POSITIVE
-      PARENTING SKILLS IN SOCIAL WORK WITH FAMILIES Program for improving the
-      professional competence of social workers 4 p.m. The price is 80 EUR.
-      WORKING WITH RESISTANCE AND AGGRESSION IN SOCIAL WORK PRACTICE Program for
-      improving the professional competence of social workers 4 p.m. The price
-      is 80 EUR. THE ADOLESCENT - THE CLIENT OF THE SOCIAL WORKER: HOW TO
-      UNDERSTAND AND HELP? Program for improving the professional competence of
-      social workers
+    <div className="bg-white py-10 px-6 lg:px-12">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          Qualification Training
+        </h1>
+        <p className="text-gray-700 leading-relaxed text-lg mb-4">
+          Those who want to learn, contact{" "}
+          <a
+            href="mailto:atsigrezk@gmail.com"
+            className="text-blue-600 underline"
+          >
+            atsigrezk@gmail.com
+          </a>{" "}
+          or call{" "}
+          <a href="tel:+865227553" className="text-blue-600 underline">
+            8 652 27 553
+          </a>
+          .
+        </p>
+
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Fundamentals of Social Work
+          </h2>
+          <p className="text-gray-700 text-lg mb-2">
+            Inaugural program for improving the professional competence of
+            individual care personnel. Duration: <strong>40 ac.h</strong>.
+          </p>
+          <p className="text-gray-700 text-lg mb-2">
+            Price: <strong>150 EUR</strong>.
+          </p>
+        </div>
+
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Development of Positive Parenting Skills in Social Work with
+            Families
+          </h2>
+          <p className="text-gray-700 text-lg mb-2">
+            Program for improving the professional competence of social workers.
+            Duration: <strong>4 p.m</strong>.
+          </p>
+          <p className="text-gray-700 text-lg mb-2">
+            Price: <strong>80 EUR</strong>.
+          </p>
+        </div>
+
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Working with Resistance and Aggression in Social Work Practice
+          </h2>
+          <p className="text-gray-700 text-lg mb-2">
+            Program for improving the professional competence of social workers.
+            Duration: <strong>4 p.m</strong>.
+          </p>
+          <p className="text-gray-700 text-lg mb-2">
+            Price: <strong>80 EUR</strong>.
+          </p>
+        </div>
+
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            The Adolescent - The Client of the Social Worker: How to Understand
+            and Help?
+          </h2>
+          <p className="text-gray-700 text-lg">
+            Program for improving the professional competence of social workers.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
