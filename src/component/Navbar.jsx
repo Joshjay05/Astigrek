@@ -6,6 +6,7 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMouseEnterLink = (index) => {
     if (window.innerWidth >= 1024) {
@@ -20,6 +21,7 @@ export function Navbar() {
   const toggleAccordion = (index) => {
     setActiveAccordion((prev) => (prev === index ? null : index));
   };
+
   const toggleMobileMenu = () => {
     setIsMobileOpen((prev) => !prev); // Toggle mobile menu visibility
   };
@@ -32,20 +34,41 @@ export function Navbar() {
       document.body.style.overflow = "auto";
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isMobileOpen]);
+
+  // Change navbar background on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-gray-800 text-white shadow-md">
+    <nav
+      className={`fixed w-full z-50 transition-colors duration-300  ${
+        isScrolled ? "bg-[#f8f8f8a1] text-white font-bold" : "bg-white"
+      } shadow-md`}
+    >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl text-black font-bold">
+        <Link to="/" className="text-2xl  font-bold">
           <img src={logo} alt="Logo" className="h-24" />
         </Link>
         {/* Hamburger for mobile */}
         <button
-          className=" text-gray-500 hover:text-gray-300 focus:outline-none lg:hidden fixed top-4 right-4 z-50"
+          className=" hover:text-gray-300 focus:outline-none lg:hidden fixed top-4 right-4 z-50"
           onClick={toggleMobileMenu}
         >
           {isMobileOpen ? (
@@ -83,7 +106,7 @@ export function Navbar() {
 
         {/* Full menu for large screens */}
         <div className="lg:flex hidden  space-x-8">
-          <Link to="/about-us" className="hover:text-gray text-gray">
+          <Link to="/about-us" className="hover:text-gray ">
             About Us
           </Link>
           {/* <Link to="/family" className="hover:text-gray text-gray"> */}
@@ -102,20 +125,20 @@ export function Navbar() {
           />
           {/* </Link> */}
 
-          <Link to="/center" className="hover:text-gray text-gray">
+          <Link to="/center" className="hover:text-gray ">
             Day Center
           </Link>
-          <Link to="/gallery" className="hover:text-gray text-gray">
+          <Link to="/gallery" className="hover:text-gray ">
             Gallery
           </Link>
-          <Link to="/projects" className="hover:text-gray text-gray">
+          <Link to="/projects" className="hover:text-gray ">
             Projects
           </Link>
-          <Link to="/training" className="hover:text-gray text-gray">
+          <Link to="/training" className="hover:text-gray ">
             Training
           </Link>
 
-          <a href="#footer" className="hover:text-gray text-gray">
+          <a href="#footer" className="hover:text-gray ">
             Contact
           </a>
         </div>
@@ -123,7 +146,11 @@ export function Navbar() {
         {/* Mobile menu */}
         {isMobileOpen && (
           <div className="lg:hidden bg-slate-200 fixed inset-0 z-50 flex flex-col space-y-4 mt-16 pt-14 px-9 overflow-y- gap-4">
-            <Link to="/about-us" className="hover:text-gray text-gray">
+            <Link
+              to="/about-us"
+              className="hover:text-gray text-gray"
+              onClick={toggleMobileMenu}
+            >
               About Us
             </Link>
             <Accordion
@@ -135,6 +162,7 @@ export function Navbar() {
               ]}
               isActive={activeAccordion === 1}
               toggleAccordion={() => toggleAccordion(1)}
+              setIsMobileOpen={setIsMobileOpen}
             />
             <Accordion
               title="Day Center"
@@ -144,14 +172,27 @@ export function Navbar() {
               ]}
               isActive={activeAccordion === 2}
               toggleAccordion={() => toggleAccordion(2)}
+              setIsMobileOpen={setIsMobileOpen}
             />
-            <Link to="/gallery" className="hover:text-gray text-gray">
+            <Link
+              to="/gallery"
+              className="hover:text-gray text-gray"
+              onClick={toggleMobileMenu}
+            >
               Gallery
             </Link>
-            <Link to="/projects" className="hover:text-gray text-gray">
+            <Link
+              to="/projects"
+              className="hover:text-gray text-gray"
+              onClick={toggleMobileMenu}
+            >
               Projects
             </Link>
-            <Link to="/training" className="hover:text-gray text-gray">
+            <Link
+              to="/training"
+              className="hover:text-gray text-gray"
+              onClick={toggleMobileMenu}
+            >
               Training
             </Link>
             <Accordion
@@ -163,7 +204,11 @@ export function Navbar() {
               isActive={activeAccordion === 3}
               toggleAccordion={() => toggleAccordion(3)}
             />
-            <a href="#footer" className="hover:text-gray text-gray">
+            <a
+              href="#footer"
+              className="hover:text-gray text-gray"
+              onClick={toggleMobileMenu}
+            >
               Contact
             </a>
           </div>
@@ -173,7 +218,13 @@ export function Navbar() {
   );
 }
 
-function Accordion({ title, items, isActive, toggleAccordion }) {
+function Accordion({
+  title,
+  items,
+  isActive,
+  toggleAccordion,
+  setIsMobileOpen,
+}) {
   return (
     <div>
       <button
@@ -201,7 +252,12 @@ function Accordion({ title, items, isActive, toggleAccordion }) {
       {isActive && (
         <div className="pl-4">
           {items.map((item, index) => (
-            <Link key={index} to={item.to} className="block py-2 text-gray-400">
+            <Link
+              key={index}
+              to={item.to}
+              className="block py-2 text-gray-400"
+              onClick={() => setIsMobileOpen(false)} // Close mobile menu on link click
+            >
               {item.title}
             </Link>
           ))}
@@ -210,6 +266,19 @@ function Accordion({ title, items, isActive, toggleAccordion }) {
     </div>
   );
 }
+
+Accordion.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+  isActive: PropTypes.bool.isRequired,
+  toggleAccordion: PropTypes.func.isRequired,
+  setIsMobileOpen: PropTypes.func.isRequired, // Add this prop
+};
 
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
@@ -238,7 +307,7 @@ function Dropdown({
       {/* Wrap the title in a Link */}
       <Link
         to={linkTo} // Use the linkTo prop for the title link
-        className="flex items-center space-x-2 text-gray-50 hover:text-gray-300 focus:outline-none pb-1"
+        className="flex items-center space-x-2  hover:text-gray-300 focus:outline-none pb-1"
         onMouseEnter={onMouseEnterLink}
         onClick={toggleAccordion} // Toggle accordion on mobile
       >
@@ -306,10 +375,14 @@ Dropdown.propTypes = {
   linkTo: PropTypes.string.isRequired, // Prop for the title link
 };
 
-function DropdownItem({ to, title }) {
+function DropdownItem({ to, title, setIsMobileOpen }) {
   return (
     <li>
-      <Link to={to} className="block py-2 px-6 hover:bg-gray-600">
+      <Link
+        to={to}
+        className="block py-2 px-6 hover:bg-gray-600"
+        onClick={() => setIsMobileOpen(false)} // Close mobile menu on link click
+      >
         {title}
       </Link>
     </li>
@@ -319,4 +392,5 @@ function DropdownItem({ to, title }) {
 DropdownItem.propTypes = {
   to: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  setIsMobileOpen: PropTypes.func.isRequired, // Add this prop
 };
