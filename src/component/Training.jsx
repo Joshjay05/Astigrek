@@ -1,8 +1,8 @@
 const Training = () => {
   return (
-    <div className="bg-white py-10 px-6 lg:px-12">
+    <div className="bg-white py-10 px-6 lg:px-12 sm:mt-20">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+        <h1 className="lg:text-4xl font-bold text-gray-800 mb-6 text-center">
           Qualification Training
         </h1>
         <p className="text-gray-700 leading-relaxed text-lg mb-4">

@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const Center = () => {
   return (
-    <div className="bg-white py-10 px-6 lg:px-12">
+    <div className="bg-white py-10 px-6 lg:px-12 sm:mt-20">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
           {/* // eslint-disable-next-line react/no-unescaped-entities */}

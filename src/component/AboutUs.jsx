@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const AboutUs = () => {
   return (
-    <div className=" py-10 px-6 lg:px-12">
+    <div className=" py-10 px-6 lg:px-12 sm:mt-20">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
           About Us

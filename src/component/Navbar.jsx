@@ -58,11 +58,11 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-colors duration-300  ${
+      className={`fixed w-full z-50 transition-colors duration-300   ${
         isScrolled ? "bg-[#f8f8f8a1] text-white font-bold" : "bg-white"
       } shadow-md`}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-6 lg:py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl  font-bold">
           <img src={logo} alt="Logo" className="h-24" />
         </Link>
@@ -156,9 +156,8 @@ export function Navbar() {
             <Accordion
               title="Family"
               items={[
-                { to: "/projects/kids", title: "Kids" },
-                { to: "/projects/children", title: "Children" },
-                { to: "/services/youth-home", title: "Youth Home" },
+                { to: "/children", title: "Children" },
+                { to: "/youth", title: "Youth" },
               ]}
               isActive={activeAccordion === 1}
               toggleAccordion={() => toggleAccordion(1)}
