@@ -58,13 +58,13 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-colors duration-300   ${
-        isScrolled ? "bg-[#f8f8f8a1] text-white font-bold" : "bg-white"
+      className={`fixed w-full z-50 h-[12vh] transition-colors duration-300   ${
+        isScrolled ? "bg-[#f8f8f8a1] text-blue font-bold" : "bg-white"
       } shadow-md`}
     >
       <div className="container mx-auto px-6 lg:py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl  font-bold">
-          <img src={logo} alt="Logo" className="h-24" />
+          <img src={logo} alt="Logo" className="max-h-[9vh]" />
         </Link>
         {/* Hamburger for mobile */}
         <button

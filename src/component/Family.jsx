@@ -25,7 +25,7 @@ const families = [
 
 const FamilySection = () => {
   return (
-    <div className="container mx-auto py-8 sm:mt-20">
+    <div className="container mx-auto py-8  mt-20">
       <h1 className="text-4xl font-bold text-center mb-8">Families</h1>
       <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6">
         {families.map((family, index) => (

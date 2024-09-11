@@ -2,7 +2,10 @@
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-gray-light text-white py-6">
+    <footer
+      id="footer"
+      className="bg text-black py-6 border-t-2 border-teal-300"
+    >
       <div className="container mx-auto px-4">
         <p className="text-center text-sm mb-4">
           Email: informacija@vaikudienoscentras.org | Phone: +37068265969
