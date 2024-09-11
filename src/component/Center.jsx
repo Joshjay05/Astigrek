@@ -87,7 +87,7 @@ const Center = () => {
           </p>
         </div>
 
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+        {/* <div className="bg-gray-100 p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Contact Information
           </h2>
@@ -105,7 +105,7 @@ const Center = () => {
             <br />
             Address: Vilties st. 4, Čižiūnai village, Trakai district, LT-21268
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

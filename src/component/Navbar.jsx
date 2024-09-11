@@ -119,7 +119,7 @@ export function Navbar() {
             onMouseLeave={handleMouseLeave}
             className="relative"
           >
-            <button className="text-white">Family</button>
+            <button className="hover:text-gray">Family</button>
             {isDropdownOpen && (
               <div className="absolute bg-white text-black shadow-lg py-2">
                 <Link

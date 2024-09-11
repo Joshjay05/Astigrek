@@ -8,7 +8,7 @@ export function Footer() {
     >
       <div className="container mx-auto px-4">
         <p className="text-center text-sm mb-4">
-          Email: informacija@vaikudienoscentras.org | Phone: +37068265969
+          Email: informacija@vaikudienoscentras.org | Phone: 37068265969
         </p>
         <div className="text-center mb-4">
           <p className="text-sm">
