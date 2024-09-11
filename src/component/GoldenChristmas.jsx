@@ -5,7 +5,7 @@ import christmas from "../assets/christmas.jpg";
 import xms from "../assets/xms.jpg";
 import xmas from "../assets/xmas.jpg";
 import xmsss from "../assets/xmsss.jpg";
-import celb from "../assets/celb.jpg";
+import celb from "../assets/christms.jpg";
 const images = [christmas, xms, xmas, xmsss, christma, celb];
 
 const GoldenChristmas = () => {

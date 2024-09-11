@@ -4,7 +4,8 @@ import concert from "../assets/concert.jpg";
 import concertbg from "../assets/concertbg.jpg";
 import attnconcert from "../assets/attnconcert.jpg";
 import concerttwo from "../assets/concerttwo.jpg";
-const images = [concert, concertbg, attnconcert, concerttwo];
+import celb from "../assets/celb.jpg";
+const images = [concert, concertbg, attnconcert, concerttwo, celb];
 
 const Concert = () => {
   return (
