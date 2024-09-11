@@ -68,16 +68,16 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 lg:py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl  font-bold">
-          <img src={logo} alt="Logo" className="max-h-[9vh]" />
+          <img src={logo} alt="Logo" className="max-h-[9vh] sm:mt-1 md:mt-1" />
         </Link>
         {/* Hamburger for mobile */}
         <button
-          className=" hover:text-gray-300 focus:outline-none lg:hidden fixed top-4 right-4 z-50"
+          className=" hover:text-gray-300 focus:outline-none lg:hidden fixed lg:top-4 right-4 z-50"
           onClick={toggleMobileMenu}
         >
           {isMobileOpen ? (
             <svg
-              className="w-6 h-6"
+              className="w-6 lg:h-6 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export function Navbar() {
             </svg>
           ) : (
             <svg
-              className="w-6 h-6"
+              className="w-6 lg:h-6 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -119,7 +119,9 @@ export function Navbar() {
             onMouseLeave={handleMouseLeave}
             className="relative"
           >
-            <button className="hover:text-gray">Family</button>
+            <Link to="/family" className="hover:text-gray">
+              Family
+            </Link>
             {isDropdownOpen && (
               <div className="absolute bg-white text-black shadow-lg py-2">
                 <Link

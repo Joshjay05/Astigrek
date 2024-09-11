@@ -14,6 +14,7 @@ import CenterTwo from "./component/CenterTwo";
 import ChildrenGallery from "./component/Children";
 import GoldenChristmas from "./component/GoldenChristmas";
 import Concert from "./component/Concert";
+import YouthGallery from "./component/Youth";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/children" element={<ChildrenGallery />} />
             <Route path="/golden" element={<GoldenChristmas />} />
             <Route path="/dance" element={<Concert />} />
+            <Route path="youth" element={<YouthGallery />} />
             {/* Dynamic Routes */}
           </Routes>
         </main>
