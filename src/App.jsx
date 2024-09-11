@@ -15,6 +15,7 @@ import ChildrenGallery from "./component/Children";
 import GoldenChristmas from "./component/GoldenChristmas";
 import Concert from "./component/Concert";
 import YouthGallery from "./component/Youth";
+import Childsession from "./component/Childsession";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/golden" element={<GoldenChristmas />} />
             <Route path="/dance" element={<Concert />} />
             <Route path="youth" element={<YouthGallery />} />
+            <Route path="childrens" element={<Childsession />} />
             {/* Dynamic Routes */}
           </Routes>
         </main>

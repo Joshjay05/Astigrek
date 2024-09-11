@@ -8,8 +8,8 @@ const images = [concert, concertbg, attnconcert, concerttwo];
 
 const Concert = () => {
   return (
-    <div className="container mx-auto px-4 py-8 sm:mt-20">
-      <h1 className="text-3xl font-bold text-center mb-8">Image Gallery</h1>
+    <div className="container mx-auto px-4 py-8 mt-24">
+      <h1 className="text-3xl font-bold text-center mb-8">Concert</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((src, index) => (
           <div key={index} className="relative">
