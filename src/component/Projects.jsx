@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const Projects = () => {
   return (
-    <div className="bg-white py-10 px-6 lg:px-12 sm:mt-20">
+    <div className="bg-white py-10 px-6 lg:px-12 mt-24">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
           Projects

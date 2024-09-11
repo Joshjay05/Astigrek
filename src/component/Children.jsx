@@ -6,7 +6,7 @@ const images = [childtwo, childthree, childone];
 
 const ChildrenGallery = () => {
   return (
-    <div className="container mx-auto px-4 py-8 sm:mt-20">
+    <div className="container mx-auto px-4 py-8 mt-20">
       <h1 className="text-3xl font-bold text-center mb-8">Kids</h1>
       <p className="text-gray-700 leading-relaxed text-lg mb-4">
         Head of household: Rima Sederevičienė{" "}
