@@ -3,20 +3,24 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 export function Navbar() {
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  // const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleMouseEnterLink = (index) => {
-    if (window.innerWidth >= 1024) {
-      setActiveDropdown(index);
-    }
-  };
+  // const handleMouseEnterLink = (index) => {
+  //   if (window.innerWidth >= 1024) {
+  //     setActiveDropdown(index);
+  //   }
+  // };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleMouseLeaveDropdown = () => {
-    setActiveDropdown(null); // Close dropdown when leaving both link and dropdown area
-  };
+  const handleMouseEnter = () => setIsDropdownOpen(true);
+  const handleMouseLeave = () => setIsDropdownOpen(false);
+
+  // const handleMouseLeaveDropdown = () => {
+  //   setActiveDropdown(null); // Close dropdown when leaving both link and dropdown area
+  // };
 
   const toggleAccordion = (index) => {
     setActiveAccordion((prev) => (prev === index ? null : index));
@@ -110,21 +114,26 @@ export function Navbar() {
             About Us
           </Link>
           {/* <Link to="/family" className="hover:text-gray text-gray"> */}
-          <Dropdown
-            title="Family"
-            //    title="Family"
-            linkTo="/family"
-            items={[
-              { to: "/children", title: "Children" },
-              { to: "/youth", title: "Youth" },
-              //   { to: "/services/youth-home", title: "Youth Home" },
-            ]}
-            isActive={activeDropdown === 1}
-            onMouseEnterLink={() => handleMouseEnterLink(1)}
-            onMouseLeaveDropdown={handleMouseLeaveDropdown}
-          />
-          {/* </Link> */}
-
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="relative"
+          >
+            <button className="text-white">Family</button>
+            {isDropdownOpen && (
+              <div className="absolute bg-white text-black shadow-lg py-2">
+                <Link
+                  to="/children"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                >
+                  Children
+                </Link>
+                <Link to="/youth" className="block px-4 py-2 hover:bg-gray-200">
+                  Youth
+                </Link>
+              </div>
+            )}
+          </div>
           <Link to="/center" className="hover:text-gray ">
             Day Center
           </Link>
